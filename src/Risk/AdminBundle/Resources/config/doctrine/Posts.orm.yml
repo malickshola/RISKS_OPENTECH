@@ -33,4 +33,11 @@ Risk\AdminBundle\Entity\Posts:
         type:
             type: boolean
             comment: ''
+        idUtilisateurs:
+            type: integer
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+            column: id_utilisateurs
     lifecycleCallbacks: {  }

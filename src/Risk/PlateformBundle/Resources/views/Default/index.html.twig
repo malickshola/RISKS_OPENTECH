@@ -18,7 +18,7 @@
 <!--search start here-->
 <div class="search">
 	<i> </i>
-        <p><a href="#" id='mail' role="button" class="btn">Verifier un mail ou une adresse mail</a> <a href="#" role="button" id="black" class="btn"> Verifier un domaine</a></p>
+        <p><a href="#" id='mail' role="button" class="active" class="btn">Verifier un mail ou une adresse mail</a> <a href="#" role="button" id="black" class="btn"> Verifier un domaine</a></p>
 	<div class="s-bar">
             
 	   <form>
@@ -26,7 +26,7 @@
 		<input type="submit" id="search"  value="Rechercher"/>
 	  </form>
         </div>
-	<p><a href="#" href="#modal-container-92468" id='new' role="button" class="btn" data-toggle="modal">Contribuez &agrave l'am&eacute;lioration de la plateforme</a> <a href="#" href="#modal-container-92468" role="button" class="btn" data-toggle="modal"> Nous contactez</a></p>
+        <p>{%if is_granted("ROLE_USER")%}<a href="#" href="#modal-container-92468" id='new' role="button" class="btn" data-toggle="modal">Contribuez &agrave l'am&eacute;lioration de la plateforme</a>{%else%}<a href="{{path("Threads_new")}}">Contribuez &agrave l'am&eacute;lioration de la plateforme</a>{%endif%} <a href="#" href="#modal-container-92468" role="button" class="btn" data-toggle="modal"> Nous contactez</a></p>
 </div>
 <div class="row">
 		<div class="col-md-12">
@@ -97,13 +97,14 @@ $("#search").click(function(e){
 $('#new').click(function(e){
     e.preventDefault();
     $('#modal-92468').trigger('click');
-    $('.modal-body').empty().load("{{path('Threads_new')}}");
+    $('.modal-body').empty().load("{{path('Threads_new')}} #conten");
 })
 </script>
 <script>
 //change form
 $('#mail').click(function(e){
     e.preventDefault();
+    $(this).css('color','blue')
     $('.s-bar').empty().load("{{path("risk_plateform_mailSearch")}}");
 });
 $('#black').click(function(e){

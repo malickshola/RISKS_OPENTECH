@@ -1,0 +1,24 @@
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    {#{ form_widget(form) }#}
+    
+    <div class="form-group">
+        {{ form_row(form.username, {'attr': {'class':"input",'placeholder':"",'size':"20"},'id':'','label':"Nom d'utilisateur"}) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_row(form.email, {'attr': {'class': 'form-control input-lg','placeholder':""},'label':'Adresse mail'}) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form.plainPassword, {'attr': {'class': 'form-control input-lg','placeholder':"Mot de passe *"},'label':' '}) }}
+    </div>
+    
+    <p class="submit">
+        <input type="submit" id="wp-submit" class="btn btn-orange btn-block" value="Inscription" value="{{ 'registration.submit'|trans }}" />
+                    </p>
+    
+    {{form_end(form)}}
+</form>

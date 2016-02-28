@@ -56,6 +56,12 @@ class Posts
      */
     private $objet;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Risk\UserBundle\Entity\User",cascade={"persist"})
+     * @ORM\JoinColumn(name="idUtilisateurs",referencedColumnName="id",nullable=true,onDelete="CASCADE")
+     */
+    protected $idUtilisateurs;
+    
     public function __construct(){
         $this->dateCreation= new \DateTime();
     }
@@ -183,5 +189,28 @@ class Posts
     public function getObjet()
     {
         return $this->objet;
+    }
+
+    /**
+     * Set idUtilisateurs
+     *
+     * @param string $idUtilisateurs
+     * @return Posts
+     */
+    public function setIdUtilisateurs($idUtilisateurs)
+    {
+        $this->idUtilisateurs = $idUtilisateurs;
+
+        return $this;
+    }
+
+    /**
+     * Get idUtilisateurs
+     *
+     * @return string 
+     */
+    public function getIdUtilisateurs()
+    {
+        return $this->idUtilisateurs;
     }
 }

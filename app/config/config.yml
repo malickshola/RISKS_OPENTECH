@@ -92,3 +92,8 @@ fos_rest:
         default_engine: twig
     routing_loader:
         default_format: json
+        
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Risk\UserBundle\Entity\User

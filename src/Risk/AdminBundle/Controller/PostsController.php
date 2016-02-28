@@ -23,7 +23,7 @@ class PostsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('RiskAdminBundle:Posts')->findAll();
+        $entities = $em->getRepository('RiskAdminBundle:Posts')->findBy(array('idUtilisateurs'=>$this->getUser()));
 
         return $this->render('RiskAdminBundle:Posts:index.html.twig', array(
             'entities' => $entities,
@@ -41,6 +41,7 @@ class PostsController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $entity->setIdUtilisateurs($this->getUser());
             $em->persist($entity);
             $em->flush();
 
@@ -346,7 +347,7 @@ foreach ($rbls as $rbl)
 printf('%s  n\'est listes sur %d des %d blacklists connues %s', $ip, count($listed_rbls), $rbl_count, PHP_EOL);
 if ( ! empty($listed_rbls) )
 {
-    printf('%s listé sur %s%s', $ip, join(', ', $listed_rbls), PHP_EOL);
+    printf('%s listï¿½ sur %s%s', $ip, join(', ', $listed_rbls), PHP_EOL);
 }
         }
         

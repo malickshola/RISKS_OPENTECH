@@ -1,0 +1,51 @@
+{% extends "::authenticate.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+{% if error %}
+    <div class='alert alert-danger'>Nom d'utilisateur ou mot de passe incorrect</div>
+{% endif %}
+<form name="loginform" id="loginform" action="{{ path("fos_user_security_check") }}" method="post">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    <p>
+                         <label for="username">{{ 'security.login.username'|trans }} <br/>
+        <input type="text" id="user_login" class="input" name="_username" size="20" value="{{ last_username }}" required="required" />
+    </label>
+                    </p>
+                    <p>
+                         <label for="password">{{ 'security.login.password'|trans }}<br/>
+        <input type="password" id="user_pass" class="input"  size="20" name="_password" required="required" />
+    </label>
+                    </p>
+                    <p class="forgetmenot">
+                        <label class="icheck-label form-label" for="rememberme">
+                            <input type="checkbox" id="rememberme" class="skin-square-orange" checked name="_remember_me" value="on" /> {{ 'security.login.remember_me'|trans }}
+                        </label>
+                    </p>
+
+
+
+                    <p class="submit">
+                        <input type="submit" id="wp-submit" class="btn btn-orange btn-block" value="Connexion" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                    </p>
+                </form>
+                    
+                    <p id="nav">
+                    <a class="pull-left" href="#" title="Password Lost and Found">Mot de passe oubli&eacute;?</a>
+                    <a class="pull-right" href="{{path("fos_user_registration_register")}}" title="Sign Up">Inscription</a>
+                </p>
+    
+
+   
+    
+
+   
+    
+
+    
+    
+
+    
+
+{% endblock %}

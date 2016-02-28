@@ -1,13 +1,21 @@
-{% extends '::base.html.twig' %}
-
+{% extends '::index.html.twig' %}
+{%block title1 %}Mes posts
+    <a name="top"></a>
+<span class='right_header'><a href="{{ path('Threads_new') }}" class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Ajouter un nouveau post</a></span>
+{%endblock%}
 {% block body -%}
-    <h1>Posts list</h1>
+    <style>
+        .right_header{
+             float: right;
+             position: absolute;
+             right: 0;
+         }
+    </style>
 
-    <table class="records_list">
+    <table class="table table-condensed table-striped responsive-utilities jambo_table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Datecreation</th>
+                <th>Cr&eacute;e le</th>
                 <th>Expediteur</th>
                 <th>Type</th>
                 <th>Contenu</th>
@@ -18,19 +26,18 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('Threads_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{% if entity.dateCreation %}{{ entity.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.dateCreation %}{{ entity.dateCreation|date('d/m/Y H:i:s') }}{% endif %}</td>
                 <td>{{ entity.expediteur }}</td>
                 <td>{{ entity.type }}</td>
-                <td>{{ entity.contenu }}</td>
+                <td>{{ entity.contenu | slice(0, 50) }}...</td>
                 <td>{{ entity.objet }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('Threads_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('Threads_show', { 'id': entity.id }) }}">Afficher</a>
                     </li>
                     <li>
-                        <a href="{{ path('Threads_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('Threads_edit', { 'id': entity.id }) }}">Modifier</a>
                     </li>
                 </ul>
                 </td>
@@ -39,11 +46,5 @@
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('Threads_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+        
     {% endblock %}

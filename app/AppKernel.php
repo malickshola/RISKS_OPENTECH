@@ -21,8 +21,10 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new \FOS\ElasticaBundle\FOSElasticaBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
             new Risk\PlateformBundle\RiskPlateformBundle(),
             new Lsw\ApiCallerBundle\LswApiCallerBundle(),
+            new Risk\UserBundle\RiskUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
