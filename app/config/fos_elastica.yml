@@ -1,0 +1,13 @@
+fos_elastica:
+    clients:
+        default: { host: localhost, port: 9200 }
+    indexes:
+        posts:
+            client: default
+            types:
+                Article:
+                    mappings: ~
+                    persistence:
+                        driver: orm
+                        model:  Risk\AdminBundle\Entity\Posts
+                        provider: ~

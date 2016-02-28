@@ -1,0 +1,4 @@
+posts : 
+  type: rest
+  resource:     "RiskPlateformBundle:PostsRest"
+  name_prefix:  api_

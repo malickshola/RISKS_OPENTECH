@@ -1,0 +1,24 @@
+{%if thread is not empty%}
+    
+    {%for threads in thread%}
+            
+            <ul>
+                <li>Expediteur: <font color="blue"><h4>{{threads.expediteur}}</h4></font></li>
+                <li><span class="text-capitalize small">Objet: {{threads.objet}}</span></li>
+                <li><p class="text-justify">Contenu: {{threads.contenu}}</p></li>
+            </ul>
+            <hr/>
+        {%endfor%}
+    
+{%endif%}
+{%if mail is not empty%}
+    
+    {%for mails in mail%}
+        <div class="alert alert-info">
+            <ul>
+            <li>{{mail.0.domain}}</li>
+            </ul>
+        </div>
+        
+        {%endfor%}
+{%endif%}

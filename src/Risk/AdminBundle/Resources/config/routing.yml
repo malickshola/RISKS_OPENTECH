@@ -1,0 +1,11 @@
+risk_admin_Threads:
+    resource: "@RiskAdminBundle/Resources/config/routing/posts.yml"
+    prefix:   /threads
+
+risk_admin_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: RiskAdminBundle:Default:index }
+    
+risk_plateform_ipCheck:
+    path:     /check
+    defaults: { _controller: RiskAdminBundle:Posts:checkBlacklist }

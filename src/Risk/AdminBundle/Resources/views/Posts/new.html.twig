@@ -1,0 +1,32 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+
+    {{ form_start(form, {'attr': {'class':'form'},'label':"",'id': ''}) }}
+        {{ form_row(form.expediteur, {'attr': {'class':'form-control'},'label':"",'id': ''}) }}
+        {{ form_row(form.type, {'attr': {'class':'form-control'},'label':"",'id': ''}) }}
+        {{ form_row(form.objet, {'attr': {'class':'form-control'},'label':"",'id': ''}) }}
+        {{ form_row(form.contenu, {'attr': {'class':'form-control'},'label':"",'id': ''}) }}
+        {{ form_row(form.submit, {'attr': {'class':'btn btn-default saved'},'label':"",'id': ''}) }}
+    {{form_end(form)}}
+
+    <script>
+        $('.saved').click(function(e){
+            e.preventDefault();
+            var data = $('.form').serialize();
+            $.ajax({
+			data:data,
+			type:"POST",
+			url:"{{path("Threads_create")}}",
+                        complete: function(){$('.loading').hide()},
+                        success: function(html){
+				$('.modal-body').empty().html('<div class="alert alert-success">Votre contribution a été prise en compte. Merci!</div>')
+
+			},
+                                error: function(XMLHttpRequest, textStatus, errorThrows) {alert('Veuillez renseigner tous les champs SVP');}
+                       
+		});
+        })
+    </script>
+        
+{% endblock %}

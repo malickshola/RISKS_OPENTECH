@@ -1,0 +1,17 @@
+risk_plateform:
+    resource: "@RiskPlateformBundle/Resources/config/routing.yml"
+    prefix:   /
+
+risk_admin:
+    resource: "@RiskAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation
+    
+#REST 
+rest : 
+  type : rest 
+  resource : "routing_rest.yml"
+  prefix : /api

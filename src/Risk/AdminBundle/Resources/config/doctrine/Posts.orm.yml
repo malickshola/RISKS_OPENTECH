@@ -1,0 +1,36 @@
+Risk\AdminBundle\Entity\Posts:
+    type: entity
+    table: posts
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        dateCreation:
+            type: datetime
+            comment: ''
+        expediteur:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+        objet:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+        contenu:
+            type: text
+            nullable: true
+            comment: ''
+        type:
+            type: boolean
+            comment: ''
+    lifecycleCallbacks: {  }
