@@ -1,0 +1,34 @@
+Threads:
+    path:     /
+    defaults: { _controller: "RiskAdminBundle:Posts:index" }
+
+Threads_show:
+    path:     /{id}/show
+    defaults: { _controller: "RiskAdminBundle:Posts:show" }
+
+Threads_new:
+    path:     /new
+    defaults: { _controller: "RiskAdminBundle:Posts:new" }
+
+Threads_create:
+    path:     /create
+    defaults: { _controller: "RiskAdminBundle:Posts:create" }
+    requirements: { _method: post }
+
+Threads_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "RiskAdminBundle:Posts:edit" }
+
+Threads_update:
+    path:     /{id}/update
+    defaults: { _controller: "RiskAdminBundle:Posts:update" }
+    requirements: { _method: post|put }
+
+Threads_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "RiskAdminBundle:Posts:delete" }
+    requirements: { _method: post|delete }
+
+Threads_check:
+    path:     check/{domain}
+    defaults: { _controller: "RiskAdminBundle:Posts:checkBlacklist" }

@@ -1,0 +1,4 @@
+services:
+#    risk_plateform.example:
+#        class: Risk\PlateformBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

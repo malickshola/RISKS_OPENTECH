@@ -1,0 +1,19 @@
+risk_plateform_homepage:
+    path:     /
+    defaults: { _controller: RiskPlateformBundle:Default:index }
+
+risk_plateform_ipSearch:
+    path:     /blacklist
+    defaults: { _controller: RiskPlateformBundle:Default:blacklist }
+    
+risk_plateform_mailSearch:
+    path:     /mail
+    defaults: { _controller: RiskPlateformBundle:Default:mail }
+    
+    
+    
+myapp_posts_rechercher:
+  pattern: /posts/rechercher
+  defaults: { _controller: RiskAdminBundle:Posts:rechercher }
+  requirements:
+    _method: POST

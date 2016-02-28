@@ -1,0 +1,7 @@
+#Rest_User : 
+#  type : rest
+#  resource: "@RiskUserBundle/Resources/config/routing_rest.yml"
+
+Rest_Posts : 
+  type : rest
+  resource: "@RiskPlateformBundle/Resources/config/routing_rest.yml"

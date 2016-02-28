@@ -1,0 +1,38 @@
+<form>
+		<input type="text" id="ip" value="Entrez un nom de domaine &agrave; v&eacute;rifier" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Entrez un nom de domaine &agrave; v&eacute;rifier';}">
+		<input type="submit" id="searchIp"  value="Rechercher"/>
+                
+	  </form>
+<div class="row">
+	</div>
+<script src="{{asset('kernel/js/jquery.min.js')}}"></script>
+<script src="{{asset('kernel/js/bootstrap.min.js')}}"></script>
+<script>
+$(".loading").hide();
+$("#searchIp").click(function(e){
+    e.preventDefault();
+    $('#modal-92468').trigger('click');
+    $('.modal-header').empty().html('Recherche en cours ....');
+    $('.modal-body').html('<img src="{{asset('kernel/images/loader.gif')}}"/>');
+    $(".loading").show();
+    var motcle = $("#ip").val();
+    var DATA = 'motcle=' + motcle;
+    $.ajax({
+        type: "POST",
+        url: "{{ path('risk_plateform_ipCheck')}}",
+        data: DATA,
+        cache: false,
+        success: function(data){
+            $('.modal-header').empty().html('Resultat de la recherche');
+           if(data != ""){
+                $('.modal-body').empty().html(data);
+            }
+            else{
+                $('.modal-body').empty().html('<div class="alert alert-danger">Aucune correspondance trouvee</div>')
+            };
+           $(".loading").hide();
+        }
+    });    
+    return false;
+});
+</script>
